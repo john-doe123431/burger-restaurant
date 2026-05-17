@@ -1,0 +1,331 @@
+><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="مطعم برغر هوس يقدم أفضل برغر مشوي على الفحم بمكونات طازجة يومياً.">
+    <title>Burger House | البرغر على أصوله</title>
+    <style>
+        /* Reset & General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth; /* Katkhlli l-page thbet b chwya mli katcliki */
+        }
+        body {
+            background-color: #2b2b2b; /* Gris foncé */
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #1f1f1f;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #800020; /* Bordeaux */
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f5f5f5;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #800020;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-right: 20px; /* Beddelna l-margin l-limen hit l-site raddinah RTL */
+        }
+        nav ul li a {
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #800020;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(43, 43, 43, 0.75), rgba(43, 43, 43, 0.75)), url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            color: #cccccc;
+        }
+        .btn {
+            background-color: #800020;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #800020;
+        }
+        .btn:hover {
+            background-color: transparent;
+            color: #800020;
+            border: 1px solid #800020;
+        }
+
+        /* Section General Styles */
+        section {
+            padding: 80px 10%;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            position: relative;
+            color: #f5f5f5;
+        }
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #800020;
+            margin: 10px auto 0;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background-color: #333333; /* Gris clair */
+        }
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .menu-card {
+            background-color: #2b2b2b;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #444444;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: #800020;
+        }
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .menu-info {
+            padding: 20px;
+        }
+        .menu-info h3 {
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+        .menu-info p {
+            color: #bbbbbb;
+            font-size: 14px;
+        }
+        .price {
+            color: #800020;
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+
+        /* About Section (من نحن) */
+        .about-section {
+            background-color: #2b2b2b;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        /* Contact Section (اتصل بنا) */
+        .contact-section {
+            background-color: #333333;
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #f5f5f5;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444444;
+            background-color: #2b2b2b;
+            color: #white;
+            font-size: 16px;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #800020;
+        }
+        .submit-btn {
+            background-color: #800020;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #5a0016;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #444444;
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="logo">BURGER<span>HOUSE</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#menu">المنيو</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>مرحباً بكم في Burger House</h1>
+        <p>أفضل وألذ برغر مشوي على الفحم في المدينة، بمكونات طازجة 100% يومياً!</p>
+        <a href="#menu" class="btn">اكتشف المنيو</a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <h2>الأكثر مبيعاً</h2>
+        <div class="menu-container">
+            
+            <!-- Item 1 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500&auto=format&fit=crop" alt="Classic Burger">
+                <div class="menu-info">
+                    <h3>كلاسيك برغر</h3>
+                    <p>لحم بقري طازج، جبنة شيدر، خس، طماطم، وصلصة الدار الخاصة.</p>
+                    <div class="price">45 درهم</div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=500&auto=format&fit=crop" alt="Cheese Burger">
+                <div class="menu-info">
+                    <h3>تشيز برغر مضاعف</h3>
+                    <p>قطعتين لحم، طبقتين من الجبن الذائب، بصل مقرمش ومخلل.</p>
+                    <div class="price">60 درهم</div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?q=80&w=500&auto=format&fit=crop" alt="Crispy Chicken">
+                <div class="menu-info">
+                    <h3>دجاج مقرمش (كريسبي)</h3>
+                    <p>صدر دجاج مقرمش، صلصة حارة خفيفة، ملفوف وسلطة.</p>
+                    <div class="price">50 درهم</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section (من نحن) -->
+    <section class="about-section" id="about">
+        <h2>من نحن</h2>
+        <div class="about-content">
+            <p>بدأنا مشوارنا في Burger House بشغف واحد: تقديم برغر حقيقي ومميز يجمع بين الجودة العالية والمذاق الأصيل. نحن نختار لحومنا بعناية فائقة ونقوم بفرمها وتحضيرها يومياً لضمان الطراوة والنكهة الغنية، كما نستخدم خضروات طازجة وصلصات سرية خاصة بنا تُضفي لمسة ساحرة على كل قضمـة.</p>
+            <br>
+            <p>هدفنا ليس فقط تقديم وجبة سريعة، بل خلق تجربة تذوق لا تُنسى لكل محبي البرغر في جو دافئ ومميز.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section (اتصل بنا) -->
+    <section class="contact-section" id="contact">
+        <h2>اتصل بنا</h2>
+        <div class="contact-container">
+            <form action="#">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل:</label>
+                    <input type="text" id="name" placeholder="أدخل اسمك هنا" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني:</label>
+                    <input type="email" id="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">رسالتك أو طلبك:</label>
+                    <textarea id="message" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">إرسال الرسالة</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Burger House. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+</html>
